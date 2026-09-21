@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background:#f5f7fb;
+            font-family:'Poppins',sans-serif;
+        }
+
+        .container{
+            max-width:1200px;
+            margin:auto;
+            padding:20px;
+            padding-bottom:100px;
+        }
+        .header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .header-actions{
+            display:flex;
+            gap:10px;
+            align-items:center;
+        }
+
+        .logo{
+            font-size:28px;
+            font-weight:700;
+            color:#1f4fa3;
+        }
+
+        .notif,
+        .stats-grid{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:15px;
+            margin:20px 0;
+        }
+
+        .stat-card{
+            background:white;
+            border-radius:20px;
+            padding:20px;
+            box-shadow:0 4px 20px rgba(0,0,0,.05);
+        }
+
+        .chart-card{
+            background:white;
+            border-radius:25px;
+            padding:25px;
+            margin-bottom:20px;
+        }
+
+        .report-list{
+            background:white;
+            border-radius:25px;
+            padding:25px;
+        }
+
+        .report-item{
+            padding:18px;
+            border-bottom:1px solid #eee;
+        }
+
+        .filter-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:15px;
+            margin-top:20px;
+        }
+
+        .filter-box{
+            background:white;
+            border-radius:18px;
+            padding:18px;
+        }
+
+        .hero-actions{
+            display:flex;
+            gap:10px;
+        }
+
+        .btn-primary{
+            background:#1f4fa3;
+            color:white;
+        }
+
+        .btn-outline{
+            background:white;
+        }
+
+        .btn-primary,
+        .btn-outline{
+            border:none;
+            border-radius:15px;
+            padding:14px 20px;
+        }
+
+        @media(max-width:768px){
+
+            .stats-grid{
+                grid-template-columns:1fr;
+            }
+
+            .filter-grid{
+                grid-template-columns:1fr;
+            }
+
+            .hero-actions{
+                flex-direction:column;
+                width:100%;
+            }
+
+            .hero-actions button{
+                width:100%;
+            }
+
+        }
+        .bottom-nav{
+            position:fixed;
+            bottom:0;
+            width:100%;
+            background:white;
+            display:flex;
+            justify-content:space-around;
+            border-top:1px solid #ddd;
+            padding:12px 0;
+        }
+
+        .bottom-nav a{
+            text-decoration:none;
+            color:#777;
+            font-size: 13px;
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            text-align: center;
+        }
+
+        .bottom-nav .active{
+            color:#1f4fa3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">KULIK UI</div>
+
+        <div class="header-actions">
+            <button class="notif">🔔</button>
+
+            <div class="store">
+                🏪 Bakso Berkah ▼
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+
+        <div>
+            <h1>Laporan</h1>
+
+            <p>
+                Pantau kinerja dan keuangan usaha Anda
+                dalam periode tertentu.
+            </p>
+        </div>
+
+        <div class="hero-actions">
+
+            <button class="btn-outline">
+                + Export Laporan
+            </button>
+
+            <button class="btn-primary">
+                📅 Pilih Periode
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Filter -->
+    <section class="filter-grid">
+
+        <div class="filter-box">
+            <small>Periode</small>
+            <h3>Mei 2025</h3>
+        </div>
+
+        <div class="filter-box">
+            <small>Bandingkan Dengan</small>
+            <h3>April 2025</h3>
+        </div>
+
+    </section>
+
+    <!-- Statistik -->
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <div>💵</div>
+
+            <small>Total Pendapatan</small>
+
+            <h2>Rp 12.560.000</h2>
+
+            <span class="green">
+                ▲ 18,6%
+            </span>
+        </div>
+
+        <div class="stat-card">
+            <div>🏷️</div>
+
+            <small>Total Laba Bersih</small>
+
+            <h2>Rp 4.356.000</h2>
+
+            <span class="green">
+                ▲ 15,2%
+            </span>
+        </div>
+
+        <div class="stat-card">
+            <div>🎯</div>
+
+            <small>Margin Keuntungan</small>
+
+            <h2>34,7%</h2>
+
+            <span class="green">
+                ▲ 2,4%
+            </span>
+        </div>
+
+        <div class="stat-card">
+            <div>📦</div>
+
+            <small>Total HPP</small>
+
+            <h2>Rp 8.204.000</h2>
+
+            <span class="green">
+                ▲ 16,1%
+            </span>
+        </div>
+
+    </section>
+
+    <!-- Grafik -->
+    <section class="chart-card">
+
+        <div class="chart-header">
+
+            <h2>Ringkasan Kinerja</h2>
+
+            <select>
+                <option>Bulanan</option>
+                <option>Mingguan</option>
+                <option>Tahunan</option>
+            </select>
+
+        </div>
+
+        <canvas id="reportChart"></canvas>
+
+    </section>
+
+    <!-- Daftar Laporan -->
+    <section class="report-list">
+
+        <div class="list-header">
+            <h2>Laporan Tersedia</h2>
+            <a href="#">Lihat Semua ></a>
+        </div>
+
+        <div class="report-item">
+            📄 Laporan Laba Rugi
+        </div>
+
+        <div class="report-item">
+            📊 Laporan Penjualan
+        </div>
+
+        <div class="report-item">
+            📦 Laporan Persediaan
+        </div>
+
+        <div class="report-item">
+            💰 Arus Kas
+        </div>
+    </section>
+</div>
+<nav class="bottom-nav">
+
+    <a href="index.html">🏠 <br>Dashboard</a>
+    <a href="produk.html">📦 <br>Produk</a>
+    <a href="hpp.html">🧮 <br>Hitung HPP</a>
+    <a href="analisis.html" >📊 <br>Analisis</a>
+    <a href="#" class="active">📄 <br>Laporan</a>
+
+</nav>
+</body>
+</html>

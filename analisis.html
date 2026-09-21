@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background:#f5f7fb;
+            font-family:'Poppins',sans-serif;
+        }
+
+        .container{
+            max-width:1200px;
+            margin:auto;
+            padding:20px;
+            padding-bottom:100px;
+        }
+        .header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .header-actions{
+            display:flex;
+            gap:10px;
+            align-items:center;
+        }
+
+        .logo{
+            font-size:28px;
+            font-weight:700;
+            color:#1f4fa3;
+        }
+
+        .notif,
+
+        .hero{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin:25px 0;
+        }
+
+        .filter-btn{
+            border:none;
+            background:white;
+            padding:14px 18px;
+            border-radius:15px;
+        }
+
+        .product-dropdown{
+            width:100%;
+            background:white;
+            border:none;
+            padding:18px;
+            border-radius:18px;
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .summary-grid{
+            margin-top:20px;
+
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:15px;
+        }
+
+        .stat-card{
+            background:white;
+            padding:20px;
+            border-radius:20px;
+            box-shadow:0 4px 20px rgba(0,0,0,.05);
+        }
+
+        .icon{
+            font-size:28px;
+            margin-bottom:15px;
+        }
+
+        .stat-card h3{
+            margin-top:8px;
+            font-size:28px;
+            color:#1f4fa3;
+        }
+
+        .green{
+            color:#1bb76e;
+            font-weight:600;
+        }
+
+        .orange{
+            color:#e4a526;
+        }
+
+        .chart-card{
+            margin-top:20px;
+
+            background:white;
+            border-radius:25px;
+
+            padding:25px;
+        }
+
+        .legend{
+            display:flex;
+            gap:25px;
+            flex-wrap:wrap;
+
+            margin:15px 0 20px;
+        }
+
+        .green-line::before{
+            content:"";
+            width:20px;
+            height:3px;
+            background:#22b573;
+            display:inline-block;
+            margin-right:8px;
+        }
+
+        .yellow-line::before{
+            content:"";
+            width:20px;
+            height:3px;
+            background:#e6ad28;
+            display:inline-block;
+            margin-right:8px;
+        }
+
+        .purple-line::before{
+            content:"";
+            width:20px;
+            height:3px;
+            background:#7b61ff;
+            display:inline-block;
+            margin-right:8px;
+        }
+
+        canvas{
+            width:100%;
+            height:350px;
+        }
+
+        @media(max-width:768px){
+
+            .hero{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:15px;
+            }
+
+            .summary-grid{
+                grid-template-columns:1fr;
+            }
+
+        }
+        .bottom-nav{
+            position:fixed;
+            bottom:0;
+            width:100%;
+            background:white;
+            display:flex;
+            justify-content:space-around;
+            border-top:1px solid #ddd;
+            padding:12px 0;
+        }
+
+        .bottom-nav a{
+            text-decoration:none;
+            color:#777;
+            font-size: 13px;
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            text-align: center;
+        }
+
+        .bottom-nav .active{
+            color:#1f4fa3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo">
+            KULIKO
+        </div>
+
+        <div class="header-actions">
+            <button class="notif">🔔</button>
+
+            <div class="store">
+                🏪 Bakso Berkah ▼
+            </div>
+        </div>
+
+    </header>
+
+    <!-- TITLE -->
+    <section class="hero">
+
+        <div>
+            <h1>Analisis Profit & BEP</h1>
+
+            <p>
+                Pantau profitabilitas usaha dan
+                temukan titik impas untuk
+                pengambilan keputusan yang lebih baik.
+            </p>
+        </div>
+
+        <button class="filter-btn">
+            ☰ Filter Analisis
+        </button>
+
+    </section>
+
+    <!-- PILIH PRODUK -->
+    <section class="product-select">
+
+        <label>Pilih Produk</label>
+
+        <button class="product-dropdown">
+
+            <span>🍜 Bakso Spesial</span>
+
+            <span>▼</span>
+
+        </button>
+
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="summary-grid">
+
+        <div class="stat-card">
+            <div class="icon">📈</div>
+
+            <small>Profit per Porsi</small>
+
+            <h3>Rp 4.000</h3>
+
+            <span class="green">
+                Margin 47%
+            </span>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon">💡</div>
+
+            <small>Harga Jual</small>
+
+            <h3>Rp 12.500</h3>
+
+            <span>
+                HPP Rp 8.500
+            </span>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon">🎯</div>
+
+            <small>BEP (Unit)</small>
+
+            <h3 class="orange">
+                350
+            </h3>
+
+            <span>
+                Rp 4.375.000
+            </span>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon">💰</div>
+
+            <small>Target Profit</small>
+
+            <h3>Rp 5.000.000</h3>
+
+            <span>
+                Per Bulan
+            </span>
+        </div>
+
+    </section>
+
+    <!-- GRAFIK -->
+    <section class="chart-card">
+
+        <h2>
+            Grafik Break Even Point (BEP)
+        </h2>
+
+        <div class="legend">
+            <span class="green-line">
+                Total Pendapatan
+            </span>
+
+            <span class="yellow-line">
+                Total Biaya
+            </span>
+
+            <span class="purple-line">
+                Total Biaya Tetap
+            </span>
+        </div>
+        <canvas id="bepChart"></canvas>
+    </section>
+</div>
+<nav class="bottom-nav">
+
+    <a href="index.html">🏠 <br>Dashboard</a>
+    <a href="produk.html">📦 <br>Produk</a>
+    <a href="hpp.html">🧮 <br>Hitung HPP</a>
+    <a href="#" class="active">📊 <br>Analisis</a>
+    <a href="laporan.html">📄 <br>Laporan</a>
+
+</nav>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6fb;
+    color:#333;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+/* Header */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#1f4fa3;
+}
+
+.store{
+    background:white;
+    padding:10px 15px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+/* Greeting */
+.top-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.card h2{
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#777;
+    font-size:14px;
+}
+
+/* Stats */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat-card{
+    background:white;
+    padding:15px;
+    border-radius:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.stat-icon{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.stat-title{
+    font-size:13px;
+    color:#777;
+}
+
+.stat-value{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.up{
+    color:#19b36b;
+    font-size:13px;
+}
+
+.down{
+    color:#e44;
+    font-size:13px;
+}
+
+/* Sales */
+.sales-card{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+    margin-bottom:20px;
+}
+
+.sales-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.sales-value{
+    font-size:42px;
+    font-weight:bold;
+    color:#1f4fa3;
+}
+
+.chart{
+    height:220px;
+    background:linear-gradient(to top,#dff7ec,#ffffff);
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#888;
+    margin-top:20px;
+}
+
+/* Quick Action */
+.quick{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+    margin-bottom:20px;
+}
+
+.quick-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.quick-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+}
+
+.quick-item{
+    text-align:center;
+}
+
+.quick-icon{
+    width:60px;
+    height:60px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#edf3ff;
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+/* Insight */
+.insight{
+    background:#eef5ff;
+    border-radius:20px;
+    padding:20px;
+}
+
+.insight h3{
+    margin-bottom:10px;
+}
+
+/* Bottom Nav */
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:white;
+    border-top:1px solid #ddd;
+    display:flex;
+    justify-content:space-around;
+    padding:10px 0;
+}
+
+.nav-item{
+    text-align:center;
+    font-size:14px;
+}
+
+/* Tablet */
+@media(max-width:768px){
+
+    .top-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .quick-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .sales-value{
+        font-size:32px;
+    }
+}
+
+/* HP */
+@media(max-width:480px){
+
+    .container{
+        padding:15px;
+        padding-bottom:90px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .quick-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .sales-value{
+        font-size:28px;
+    }
+
+    .chart{
+        height:180px;
+    }
+}
+#nav-produk {
+    text-decoration: none;
+    color: #777;
+}
+.active {
+    color: #1e4fa8;
+    text-decoration: none;
+}
+.item-cepat {
+    text-decoration: none;
+    color: #333;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">KULIKO</div>
+        <div class="store">🏪 Bakso Berkah ▼</div>
+    </div>
+
+    <!-- Greeting -->
+    <div class="top-grid">
+
+        <div class="card">
+            <h2>Selamat pagi, Budi!</h2>
+            <p class="subtitle">
+                Yuk pantau performa usaha Anda hari ini.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🏪 Bakso Berkah</h3>
+            <p class="subtitle">Usaha Kuliner</p>
+        </div>
+
+    </div>
+
+    <!-- Statistik -->
+    <div class="stats">
+
+        <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <div class="stat-title">HPP per Porsi</div>
+            <div class="stat-value">Rp 8.500</div>
+            <div class="down">↓ 2% dari kemarin</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">📈</div>
+            <div class="stat-title">Margin Keuntungan</div>
+            <div class="stat-value">43,3%</div>
+            <div class="up">↑ 3,2% dari kemarin</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-title">BEP Bulanan</div>
+            <div class="stat-value">350</div>
+            <div class="down">↓ 15 porsi</div>
+        </div>
+
+    </div>
+
+    <!-- Penjualan -->
+    <div class="sales-card">
+
+        <div class="sales-header">
+            <h2>Ringkasan Penjualan</h2>
+            <span>Bulan Ini ▼</span>
+        </div>
+
+        <p>Total Penjualan Bulan Ini</p>
+
+        <div class="sales-value">
+            Rp 12.560.000
+        </div>
+
+        <div class="up">
+            ↑ 18,6% dari bulan lalu
+        </div>
+
+        <div class="chart">
+            Grafik Penjualan
+        </div>
+
+    </div>
+
+    <!-- Aksi Cepat -->
+    <div class="quick">
+
+        <div class="quick-header">
+            <h2>Aksi Cepat</h2>
+            <span>Lihat Semua ></span>
+        </div>
+
+        <div class="quick-grid">
+
+            <div class="quick-item">
+                <a href="hpp.html" class="item-cepat">
+                    <div class="quick-icon">🧮</div>
+                    Hitung HPP
+                </a>
+            </div>
+
+            <div class="quick-item">
+                <a href="analisis.html" class="item-cepat">
+                    <div class="quick-icon">📊</div>
+                    Analisis
+                </a>
+            </div>
+
+            <div class="quick-item">
+                <a href="harga.html" class="item-cepat">
+                    <div class="quick-icon">💡</div>
+                    Harga
+                </a>
+            </div>
+
+            <div class="quick-item">
+                <a href="laporan.html" class="item-cepat">
+                    <div class="quick-icon">📋</div>
+                    Laporan
+                </a>
+            </div>
+
+            <div class="quick-item">
+                <a href="produk.html" class="item-cepat">
+                    <div class="quick-icon">📦</div>
+                    Produk
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Insight -->
+    <div class="insight">
+        <h3>✨ Insight Hari Ini</h3>
+        <p>
+            Keuntungan Anda meningkat 18% dibanding bulan lalu.
+            Pertahankan performa penjualan saat ini.
+        </p>
+    </div>
+
+</div>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+
+    <div class="nav-item">
+        <a href="#" class="active">
+            🏠<br>Dashboard
+        </a>
+    </div>
+
+    <div class="nav-item">
+        <a href="produk.html" id="nav-produk">
+            📦<br>Produk
+        </a>
+    </div>
+
+    <div class="nav-item">
+        <a href="hpp.html" id="nav-produk">
+            🧮<br>HPP
+        </a>
+    </div>
+
+    <div class="nav-item">
+        <a href="analisis.html" id="nav-produk">
+            📊<br>Analisis
+        </a>
+    </div>
+
+    <div class="nav-item">
+        <a href="laporan.html" id="nav-produk">
+            📄<br>Laporan
+        </a>
+    </div>
+
+</div>
+</body>
+</html>

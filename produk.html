@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+    background:#f4f6fb;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    padding-bottom:90px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header-right{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#1e4fa8;
+}
+
+.notif,
+.store,
+.btn-primary{
+    border:none;
+    border-radius:12px;
+    background:white;
+    padding:12px 16px;
+}
+
+.btn-primary{
+    background:#1e4fa8;
+    color:white;
+    font-weight:bold;
+}
+
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:25px 0;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.card-stat{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+}
+
+.filter-area{
+    margin:20px 0;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:10px;
+}
+
+.filter-area input,
+.filter-area button,
+.filter-area select{
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    background:white;
+}
+
+.table-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.table-header{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr 1fr;
+    padding:15px;
+    background:#fafafa;
+    font-weight:bold;
+}
+
+.product-row{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr 1fr;
+    padding:18px;
+    border-top:1px solid #eee;
+    align-items:center;
+}
+
+.product-info{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.food-icon{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#f5f5f5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.badge{
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.makanan{
+    background:#eef3ff;
+    color:#3459d1;
+}
+
+.green{
+    color:#22b573;
+    font-weight:bold;
+}
+
+.status{
+    color:#22b573;
+}
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:white;
+    display:flex;
+    justify-content:space-around;
+    padding:10px 0;
+    border-top:1px solid #ddd;
+}
+
+.bottom-nav a{
+    text-decoration:none;
+    color:#777;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    font-size:13px;
+}
+
+.bottom-nav .active{
+    color:#1e4fa8;
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    .hero{
+        flex-direction:column;
+        gap:15px;
+        align-items:flex-start;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .filter-area{
+        grid-template-columns:1fr;
+    }
+
+    .table-header{
+        display:none;
+    }
+
+    .product-row{
+        grid-template-columns:1fr;
+        gap:10px;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">KULIKO</div>
+
+        <div class="header-right">
+            <button class="notif">🔔</button>
+
+            <div class="store">
+                🏪 Bakso Berkah ▼
+            </div>
+        </div>
+    </header>
+
+    <!-- Judul -->
+    <section class="hero">
+
+        <div>
+            <h1>Produk & Resep</h1>
+            <p>
+                Kelola produk/menu dan komposisi resep
+                dengan mudah dan terstruktur.
+            </p>
+        </div>
+
+        <button class="btn-primary">
+            + Tambah Produk
+        </button>
+
+    </section>
+
+    <!-- Statistik -->
+    <section class="stats">
+
+        <div class="card-stat">
+            <div>🛒</div>
+            <small>Total Produk</small>
+            <h2>18</h2>
+            <p>menu aktif</p>
+        </div>
+
+        <div class="card-stat">
+            <div>🍲</div>
+            <small>Total Resep</small>
+            <h2>18</h2>
+            <p>resep tersimpan</p>
+        </div>
+
+        <div class="card-stat">
+            <div>📄</div>
+            <small>Total Bahan</small>
+            <h2>52</h2>
+            <p>bahan tersimpan</p>
+        </div>
+
+    </section>
+
+    <!-- Filter -->
+    <section class="filter-area">
+
+        <input
+            type="text"
+            placeholder="Cari produk atau menu..."
+        >
+
+        <button>Filter</button>
+
+        <select>
+            <option>Semua Kategori</option>
+        </select>
+
+    </section>
+
+    <!-- Tabel Produk -->
+    <section class="table-card">
+
+        <div class="table-header">
+            <div>Produk/Menu</div>
+            <div>Kategori</div>
+            <div>HPP</div>
+            <div>Margin</div>
+            <div>Status</div>
+        </div>
+
+        <div class="product-row">
+
+            <div class="product-info">
+                <div class="food-icon">🍜</div>
+
+                <div>
+                    <h4>Bakso Spesial</h4>
+                    <small>Resep: 12 bahan</small>
+                </div>
+            </div>
+
+            <div>
+                <span class="badge makanan">
+                    Makanan
+                </span>
+            </div>
+
+            <div>
+                Rp 8.500
+            </div>
+
+            <div class="green">
+                47%
+            </div>
+
+            <div class="status">
+                Aktif
+            </div>
+
+        </div>
+
+        <div class="product-row">
+
+            <div class="product-info">
+                <div class="food-icon">🍝</div>
+
+                <div>
+                    <h4>Mie Goreng</h4>
+                    <small>Resep: 10 bahan</small>
+                </div>
+            </div>
+
+            <div>
+                <span class="badge makanan">
+                    Makanan
+                </span>
+            </div>
+
+            <div>
+                Rp 7.200
+            </div>
+
+            <div class="green">
+                45%
+            </div>
+
+            <div class="status">
+                Aktif
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- Bottom Nav -->
+<nav class="bottom-nav">
+    <a href="index.html">🏠<span>Dashboard</span></a>
+
+    <a href="#" class="active">
+        📦<span>Produk</span>
+    </a>
+    <a href="hpp.html">🧮<span>Hitung HPP</span></a>
+    <a href="analisis.html">📊<span>Analisis</span></a>
+    <a href="laporan.html">📄<span>Laporan</span></a>
+
+</nav>
+</body>
+</html>

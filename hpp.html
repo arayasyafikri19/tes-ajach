@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background:#f4f6fb;
+            font-family:'Poppins',sans-serif;
+        }
+
+        .container{
+            max-width:1200px;
+            margin:auto;
+            padding:20px;
+            padding-bottom:90px;
+        }
+
+        .header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .header-actions{
+            display:flex;
+            gap:10px;
+            align-items:center;
+        }
+
+        .logo{
+            font-size:28px;
+            font-weight:700;
+            color:#1f4fa3;
+        }
+
+        .notif,
+        .store{
+            background:white;
+            border:none;
+            padding:12px 15px;
+            border-radius:15px;
+        }
+
+        .hero{
+            margin-top:25px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .btn-primary{
+            background:#1f4fa3;
+            color:white;
+            border:none;
+            padding:15px 25px;
+            border-radius:15px;
+            font-weight:600;
+        }
+
+        .product-select{
+            margin-top:25px;
+        }
+
+        .product-dropdown{
+            width:100%;
+            background:white;
+            border:none;
+            margin-top:10px;
+            padding:18px;
+            border-radius:18px;
+            display:flex;
+            justify-content:space-between;
+        }
+
+        .summary-card{
+            margin-top:20px;
+            background:white;
+            border-radius:25px;
+            padding:20px;
+        }
+
+        .summary-header{
+            display:flex;
+            justify-content:space-between;
+            margin-bottom:20px;
+        }
+
+        .summary-grid{
+            display:grid;
+            grid-template-columns:2fr 1fr 1fr 1fr;
+            gap:15px;
+        }
+
+        .hpp-main{
+            background:#edf3ff;
+            border-radius:20px;
+            padding:20px;
+        }
+
+        .hpp-main h2{
+            color:#1f4fa3;
+            font-size:40px;
+        }
+
+        .negative{
+            color:#d9534f;
+        }
+
+        .info-box{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+        }
+
+        .info-box h4{
+            color:#6b4fd1;
+        }
+
+        .tabs{
+            display:flex;
+            gap:30px;
+            margin:25px 0;
+            overflow:auto;
+        }
+
+        .tab{
+            background:none;
+            border:none;
+            padding-bottom:10px;
+            font-weight:600;
+        }
+
+        .tab.active{
+            color:#1f4fa3;
+            border-bottom:3px solid #1f4fa3;
+        }
+
+        .table-card{
+            background:white;
+            border-radius:25px;
+            overflow:hidden;
+        }
+
+        .table-top{
+            padding:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .add-btn{
+            background:none;
+            border:none;
+            color:#1f4fa3;
+            font-weight:600;
+        }
+
+        .table-header,
+        .ingredient-row{
+            display:grid;
+            grid-template-columns:2fr .8fr .8fr 1fr 1fr;
+            padding:15px 20px;
+        }
+
+        .table-header{
+            background:#fafafa;
+            font-weight:600;
+        }
+
+        .ingredient-row{
+            border-top:1px solid #eee;
+            align-items:center;
+        }
+
+        .total{
+            font-weight:700;
+        }
+
+        .bottom-nav{
+            position:fixed;
+            bottom:0;
+            width:100%;
+            background:white;
+            display:flex;
+            justify-content:space-around;
+            border-top:1px solid #ddd;
+            padding:12px 0;
+        }
+
+        .bottom-nav a{
+            text-decoration:none;
+            color:#777;
+            font-size: 13px;
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            text-align: center;
+        }
+
+        .bottom-nav .active{
+            color:#1f4fa3;
+        }
+
+        @media(max-width:768px){
+
+            .hero{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:15px;
+            }
+
+            .summary-grid{
+                grid-template-columns:1fr;
+            }
+
+            .table-header{
+                display:none;
+            }
+
+            .ingredient-row{
+                grid-template-columns:1fr;
+                gap:8px;
+            }
+
+            .table-top{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <header class="header">
+
+        <div>
+            <div class="logo">KULIKO</div>
+        </div>
+
+        <div class="header-actions">
+            <button class="notif">🔔</button>
+
+            <div class="store">
+                🏪 Bakso Berkah ▼
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Judul -->
+    <section class="hero">
+
+        <div>
+            <h1>Hitung HPP</h1>
+
+            <p>
+                Hitung Harga Pokok Produksi (HPP)
+                per porsi secara akurat untuk
+                setiap produk Anda.
+            </p>
+        </div>
+
+        <button class="btn-primary">
+            + Hitung Baru
+        </button>
+
+    </section>
+
+    <!-- Pilih Produk -->
+    <section class="product-select">
+
+        <label>Pilih Produk</label>
+
+        <button class="product-dropdown">
+
+            <div class="product-left">
+                🍜 Bakso Spesial
+            </div>
+
+            <span>▼</span>
+
+        </button>
+
+    </section>
+
+    <!-- Ringkasan -->
+    <section class="summary-card">
+
+        <div class="summary-header">
+            <h3>Ringkasan Hasil Perhitungan</h3>
+            <span>Per 1 Porsi</span>
+        </div>
+
+        <div class="summary-grid">
+
+            <div class="hpp-main">
+
+                <small>Total HPP per Porsi</small>
+
+                <h2>Rp 8.500</h2>
+
+                <span class="negative">
+                    -2% dari sebelumnya
+                </span>
+
+            </div>
+
+            <div class="info-box">
+                <small>Total Biaya Bahan</small>
+                <h4>Rp 6.200</h4>
+            </div>
+
+            <div class="info-box">
+                <small>Total Biaya Tenaga Kerja</small>
+                <h4>Rp 1.300</h4>
+            </div>
+
+            <div class="info-box">
+                <small>Biaya Overhead</small>
+                <h4>Rp 1.000</h4>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Tabs -->
+    <section class="tabs">
+
+        <button class="tab active">
+            Bahan Baku
+        </button>
+
+        <button class="tab">
+            Tenaga Kerja
+        </button>
+
+        <button class="tab">
+            Overhead
+        </button>
+
+        <button class="tab">
+            Ringkasan
+        </button>
+
+    </section>
+
+    <!-- Data Bahan -->
+    <section class="table-card">
+
+        <div class="table-top">
+
+            <div>
+                <h3>Bahan Baku</h3>
+
+                <p>
+                    Daftar bahan dan biaya yang digunakan
+                    dalam resep
+                </p>
+            </div>
+
+            <button class="add-btn">
+                + Tambah Bahan
+            </button>
+
+        </div>
+
+        <div class="table-header">
+
+            <span>Bahan</span>
+            <span>Jumlah</span>
+            <span>Satuan</span>
+            <span>Harga</span>
+            <span>Total</span>
+
+        </div>
+
+        <div class="ingredient-row">
+
+            <div class="ingredient">
+                🥩 Daging Sapi
+            </div>
+
+            <div>100</div>
+
+            <div>gram</div>
+
+            <div>Rp 80.000</div>
+
+            <div class="total">
+                Rp 8.000
+            </div>
+
+        </div>
+
+        <div class="ingredient-row">
+
+            <div class="ingredient">
+                🌽 Tepung Tapioka
+            </div>
+
+            <div>20</div>
+
+            <div>gram</div>
+
+            <div>Rp 10.000</div>
+
+            <div class="total">
+                Rp 2.000
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<nav class="bottom-nav">
+
+    <a href="index.html">🏠 <br>Dashboard</a>
+    <a href="produk.html">📦 <br>Produk</a>
+    <a class="active" href="#">🧮 <br>Hitung HPP</a>
+    <a href="analisis.html">📊 <br>Analisis</a>
+    <a href="laporan.html">📄 <br>Laporan</a>
+
+</nav>
+
+</body>
+</html>
